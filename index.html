@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marlowe Analytics — Institutional Presentation</title>
     
-    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -111,6 +110,7 @@
         .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; }
 
         .metric-val { font-size: 2.2rem; font-weight: 700; font-family: var(--font-mono); color: var(--text-primary); margin-top: 5px; text-shadow: 0 0 20px rgba(255,255,255,0.1); }
+        .metric-val span { font-size: 0.85rem; font-weight: 400; font-family: var(--font-main); color: var(--text-secondary); }
         .metric-lbl { font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-bottom: 5px; }
 
         /* Risk Management Custom Slide */
@@ -196,7 +196,6 @@
 
     <main class="main-content">
         
-        <!-- SLIDE 1: Title -->
         <div id="slide-0" class="slide-layout">
             <span class="slide-tag">01 / Title</span>
             <h1 class="slide-title">Marlowe Analytics</h1>
@@ -207,7 +206,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 2: The New Market Standard -->
         <div id="slide-1" class="slide-layout slide-hidden">
             <span class="slide-tag">02 / Introduction</span>
             <h1 class="slide-title">The New Market Standard</h1>
@@ -227,7 +225,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 3: Network Infrastructure Context -->
         <div id="slide-2" class="slide-layout slide-hidden">
             <span class="slide-tag">03 / Target Processing Environments</span>
             <h1 class="slide-title">Market Structural Environments</h1>
@@ -248,7 +245,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 4: Market Context -->
         <div id="slide-3" class="slide-layout slide-hidden">
             <span class="slide-tag">04 / Context</span>
             <h1 class="slide-title">Market Context: May 2026</h1>
@@ -271,82 +267,77 @@
             </div>
         </div>
 
-        <!-- SLIDE 5: MARKET SIZING (Sourced & Calibrated to Real-World Asset Horizons) -->
         <div id="slide-4" class="slide-layout slide-hidden">
             <span class="slide-tag">05 / Sizing</span>
             <h1 class="slide-title">Market Sizing: Cross-Asset Allocation Framework</h1>
-            <p class="slide-subtitle">Decoupling our addressable parameters from internal projections to secure a defensive, independently verified institutional baseline[cite: 2].</p>
+            <p class="slide-subtitle">Decoupling our addressable parameters from internal projections to secure a defensive, independently verified institutional baseline.</p>
             <div class="grid-3">
                 <div class="metric-card">
                     <div class="metric-lbl">Total Addressable Market (TAM)</div>
-                    <div class="metric-val">$65.80B <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-secondary);">Daily</span></div>
+                    <div class="metric-val">$65.80B <span>Daily</span></div>
                     <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px; line-height: 1.5;">
-                        All global on-chain commodity derivatives volume combined directly with macro prediction platform depths ($700M/day derived from verified $21B monthly clearing parameters)[cite: 2].
+                        All global on-chain commodity derivatives volume combined directly with macro prediction platform depths ($700M/day derived from verified $21B monthly clearing parameters).
                     </p>
                 </div>
                 <div class="metric-card" style="border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.05);">
                     <div class="metric-lbl" style="color: var(--accent-blue-light);">Serviceable Available Market (SAM)</div>
-                    <div class="metric-val" style="color: var(--accent-blue);">$3.20B <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-secondary);">Daily</span></div>
+                    <div class="metric-val" style="color: var(--accent-blue);">$3.20B <span>Daily</span></div>
                     <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px; line-height: 1.5;">
-                        Verified $2.2B/day flowing through HIP-3 tokenized RWA sub-layers on Hyperliquid, paired with $1.0B/day in sports-specific contract volume tracked across Polymarket and Kalshi[cite: 2].
+                        Verified $2.2B/day flowing through HIP-3 tokenized RWA sub-layers on Hyperliquid, paired with $1.0B/day in sports-specific contract volume tracked across Polymarket and Kalshi.
                     </p>
                 </div>
                 <div class="metric-card" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05);">
                     <div class="metric-lbl" style="color: var(--success);">Serviceable Obtainable Market (SOM)</div>
-                    <div class="metric-val" style="color: var(--success);">$160.0M <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-secondary);">Daily</span></div>
+                    <div class="metric-val" style="color: var(--success);">$160.0M <span>Daily</span></div>
                     <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 10px; line-height: 1.5;">
-                        Our terminal capacity target, modeled strictly as an execution capture rate of exactly <strong>5.0% of the $3.2B independently addressable SAM</strong>[cite: 2].
+                        Our terminal capacity target, modeled strictly as an execution capture rate of exactly <strong>5.0% of the $3.2B independently addressable SAM</strong>.
                     </p>
                 </div>
             </div>
             
-            <!-- Sourcing Panel -->
             <div class="source-box">
                 <div class="source-title"><i class="fa-solid fa-square-poll-horizontal"></i> Sourcing & Independent Verification Data</div>
-                <strong>Commodity / RWA Sourcing:</strong> Volumes derived from public L1 blockchain metrics and historical audits of Hyperliquid HIP-3 contracts (clearing an average baseline of $2.2B/day alongside trade.xyz infrastructure sub-layers)[cite: 2]. <br>
-                <strong>Sports Prediction Sourcing:</strong> Sourced via rolling weekly transaction records published by Kalshi (DCM registry data) and Dune Analytics tracking protocols for Polymarket sports-specific index markets[cite: 2].
+                <strong>Commodity / RWA Sourcing:</strong> Volumes derived from public L1 blockchain metrics and historical audits of Hyperliquid HIP-3 contracts (clearing an average baseline of $2.2B/day alongside trade.xyz infrastructure sub-layers). <br>
+                <strong>Sports Prediction Sourcing:</strong> Sourced via rolling weekly transaction records published by Kalshi (DCM registry data) and Dune Analytics tracking protocols for Polymarket sports-specific index markets.
             </div>
         </div>
 
-        <!-- SLIDE 6: SOM Capture & Unit Economics -->
         <div id="slide-5" class="slide-layout slide-hidden">
             <span class="slide-tag">06 / Growth Target Scale</span>
-            <h1 class="slide-title">36-Month Aggregated Volume Ramp-Up</h1>
-            <p class="slide-subtitle">Capturing our net edge spread across the unified multi-asset footprint[cite: 2]. Our structural deployment curve scales from an initial <strong>$4.5M combined daily volume</strong> at launch up to a long-term strategy allocation capacity of <strong>$45.0M daily volume</strong> at Month 36.</p>
+            <h1 class="slide-title">36-Month Volume Ramp-Up</h1>
+            <p class="slide-subtitle">Capturing our net edge spread across our execution timeline. Our growth tracks systematically from an initial <strong>$2.5M daily volume</strong> at launch up to a terminal capacity milestone of <strong>$25.0M daily volume</strong> at Month 36.</p>
             <div class="grid-2">
                 <div class="card" style="padding: 20px;">
                     <div style="height: 300px; position: relative;">
                         <canvas id="growthChart"></canvas>
                     </div>
                 </div>
-                <div class="panel; display: flex; flex-direction: column; justify-content: center;">
-                    <h3 style="margin-top:0;">Interactive 3-Year Aggregated Simulator</h3>
+                <div class="panel" style="display: flex; flex-direction: column; justify-content: center;">
+                    <h3 style="margin-top:0;">Interactive 3-Year Yield Simulator</h3>
                     <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 25px;">Adjust the timeline target slider to view baseline model cash flows evaluated against our 1.6bps net realized execution edge.</p>
-                    <div class="metric-lbl">Aggregate Daily Volume (RWAs + Sports PM)</div>
-                    <input type="range" class="control-slider" id="vol-slider" min="4500000" max="45000000" step="450000" value="45000000" style="margin-bottom: 15px;" oninput="updateEconomics()">
-                    <div id="vol-badge" class="badge" style="display: inline-block; width: max-content; margin-bottom: 30px;">$45.00M</div>
+                    <div class="metric-lbl">Target Trading Volume Scale</div>
+                    <input type="range" class="control-slider" id="vol-slider" min="2500000" max="25000000" step="250000" value="25000000" style="margin-bottom: 15px;" oninput="updateEconomics()">
+                    <div id="vol-badge" class="badge" style="display: inline-block; width: max-content; margin-bottom: 30px;">$25.00M</div>
                     <div class="grid-2" style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; border: 1px solid var(--border-light); box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);">
                         <div>
                             <div class="metric-lbl">Daily Net Profit (1.6bps)</div>
-                            <div id="rev-daily" style="font-family: var(--font-mono); color: var(--success); font-size: 1.4rem; font-weight: bold; text-shadow: 0 0 10px rgba(16,185,129,0.3);">$7,200</div>
+                            <div id="rev-daily" style="font-family: var(--font-mono); color: var(--success); font-size: 1.4rem; font-weight: bold; text-shadow: 0 0 10px rgba(16,185,129,0.3);">$4,000</div>
                         </div>
                         <div>
-                            <div class="metric-lbl">Annualized Run-Rate Base</div>
-                            <div id="rev-annual" style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: bold; color: var(--text-primary);">$2.63M</div>
+                            <div class="metric-lbl">Annualized Run-Rate</div>
+                            <div id="rev-annual" style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: bold; color: var(--text-primary);">$1.46M</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 7: Core Target Markets -->
         <div id="slide-6" class="slide-layout slide-hidden">
             <span class="slide-tag">07 / Execution Venues</span>
             <h1 class="slide-title">Our Target Market Sectors</h1>
             <p class="slide-subtitle">Our infrastructure partitions capital deployment across two major processing spaces to secure delta-neutral capture loops.</p>
             
             <div style="display: flex; flex-direction: column; gap: 20px;">
-                <!-- RWA Section -->
                 <div>
                     <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-blue-light); margin-bottom: 12px;"><i class="fa-solid fa-box-archive" style="margin-right: 8px;"></i> Tokenized RWA Perpetuals (Hyperliquid)</h3>
                     <div class="grid-4">
@@ -369,7 +360,6 @@
                     </div>
                 </div>
 
-                <!-- Sports Prediction Layer -->
                 <div>
                     <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--warning); margin-bottom: 12px;"><i class="fa-solid fa-trophy" style="margin-right: 8px;"></i> Sports Prediction Markets (Polymarket / Kalshi)</h3>
                     <div class="grid-4">
@@ -394,7 +384,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 8: Strategy Flywheel -->
         <div id="slide-7" class="slide-layout slide-hidden">
             <span class="slide-tag">08 / Strategy</span>
             <h1 class="slide-title">The Marlowe Strategy Flywheel</h1>
@@ -418,7 +407,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 9: Data Sensor Edge -->
         <div id="slide-8" class="slide-layout slide-hidden">
             <span class="slide-tag">09 / Edge</span>
             <h1 class="slide-title" style="margin-bottom: 15px;">Market Making as a High-Fidelity Data Sensor</h1>
@@ -446,7 +434,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 10: The Soft Market Moat -->
         <div id="slide-9" class="slide-layout slide-hidden">
             <span class="slide-tag">10 / Moat</span>
             <h1 class="slide-title" style="margin-bottom: 40px; font-size: 2.5rem;">The "Soft Market" Moat</h1>
@@ -469,7 +456,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 11: THE BIG VISION -->
         <div id="slide-10" class="slide-layout slide-hidden">
             <span class="slide-tag">11 / Macro Horizon Terminal</span>
             <h1 class="slide-title">The Predictive Alpha Monopoly</h1>
@@ -502,7 +488,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 12: The Founders -->
         <div id="slide-11" class="slide-layout slide-hidden">
             <span class="slide-tag">12 / Leadership</span>
             <h1 class="slide-title">The Founders</h1>
@@ -526,7 +511,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 13: Risk Management -->
         <div id="slide-12" class="slide-layout slide-hidden">
             <span class="slide-tag">13 / Safeguards</span>
             <h1 class="slide-title">Risk Management & Capital Preservation</h1>
@@ -556,7 +540,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 14: Performance Goals -->
         <div id="slide-13" class="slide-layout slide-hidden">
             <span class="slide-tag">14 / Targets</span>
             <h1 class="slide-title">Unit Economics & Performance Goals</h1>
@@ -577,7 +560,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 15: Investor Economics -->
         <div id="slide-14" class="slide-layout slide-hidden">
             <span class="slide-tag">15 / Terms</span>
             <h1 class="slide-title">Investor Economics</h1>
@@ -599,7 +581,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 16: Use of Funds -->
         <div id="slide-15" class="slide-layout slide-hidden">
             <span class="slide-tag">16 / Roadmap</span>
             <h1 class="slide-title">Use of Funds & Roadmap</h1>
@@ -631,7 +612,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 17: External Resources -->
         <div id="slide-16" class="slide-layout slide-hidden">
             <span class="slide-tag">✨ / External Resources</span>
             <h1 class="slide-title">Data Room & Resources</h1>
@@ -688,13 +668,13 @@
                 data: {
                     labels: ['Launch (M1)', 'Year 1 (M12)', 'Year 2 (M24)', 'Year 3 (M36)'],
                     datasets: [
-                        { label: 'Model Horizon Track', data: [4.5, 9.0, 27.0, 45.0], borderColor: 'rgba(59, 130, 246, 0.3)', borderDash: [5, 5], borderWidth: 2, pointRadius: 0, fill: false },
-                        { label: 'Aggregated Daily Volume ($M)', data: [4.5, 9.0, 27.0, 45.0], borderColor: '#10B981', borderWidth: 3, pointBackgroundColor: '#10B981', pointBorderColor: '#040609', pointRadius: 6, tension: 0.2, fill: true, backgroundColor: 'rgba(16, 185, 129, 0.05)' }
+                        { label: 'Model Horizon Track', data: [2.5, 5.0, 15.0, 25.0], borderColor: 'rgba(59, 130, 246, 0.3)', borderDash: [5, 5], borderWidth: 2, pointRadius: 0, fill: false },
+                        { label: 'Target Execution Volume ($M)', data: [2.5, 5.0, 15.0, 25.0], borderColor: '#10B981', borderWidth: 3, pointBackgroundColor: '#10B981', pointBorderColor: '#040609', pointRadius: 6, tension: 0.2, fill: true, backgroundColor: 'rgba(16, 185, 129, 0.05)' }
                     ]
                 },
                 options: { 
                     responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, 
-                    scales: { y: { grid: { color: '#1F2937' }, min: 0, max: 50, ticks: { callback: v => '$'+v+'M'} }, x: { grid: { display: false } } }
+                    scales: { y: { grid: { color: '#1F2937' }, min: 0, max: 30, ticks: { callback: v => '$'+v+'M'} }, x: { grid: { display: false } } }
                 }
             });
             updateEconomics();
@@ -704,6 +684,7 @@
             const vol = parseFloat(document.getElementById('vol-slider').value);
             document.getElementById('vol-badge').innerText = "$" + (vol / 1000000).toFixed(2) + "M";
             
+            // Evaluated explicitly against the 1.6bps Net Realized Edge parameter framework
             const daily = vol * 0.00016;
             const annual = daily * 365;
             
@@ -718,12 +699,12 @@
             if(growthChartInstance) {
                 let volM = vol / 1000000;
                 
-                let p2 = Math.min(9.0, volM);
-                let p3 = volM > 9.0 ? Math.min(27.0, 9.0 + ((volM - 9.0) * (18.0 / 36.0))) : null;
-                let p4 = volM > 27.0 ? volM : null;
+                let p2 = Math.min(5.0, volM);
+                let p3 = volM > 5.0 ? Math.min(15.0, 5.0 + ((volM - 5.0) * (10.0 / 20.0))) : null;
+                let p4 = volM > 15.0 ? volM : null;
                 
-                growthChartInstance.data.datasets[1].data = [4.5, p2, p3, p4];
-                growthChartInstance.data.datasets[0].data = [4.5, 9.0, 27.0, volM]; 
+                growthChartInstance.data.datasets[1].data = [2.5, p2, p3, p4];
+                growthChartInstance.data.datasets[0].data = [2.5, 5.0, 15.0, volM]; 
                 growthChartInstance.update();
             }
         }
