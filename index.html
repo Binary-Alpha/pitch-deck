@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
-        /* Marlowe Institutional Branding - Premium Aesthetics */
+        /* Marlowe Institutional Branding */
         :root {
             --bg-base: #040609;
             --bg-surface: rgba(15, 19, 26, 0.65);
@@ -70,93 +70,82 @@
             font-size: 0.8rem; font-weight: 500; color: var(--text-secondary);
             transition: all 0.2s ease; display: flex; align-items: center; justify-content: space-between;
         }
-        .nav-item:hover { color: var(--text-primary); background-color: var(--bg-card); transform: translateX(2px);}
+        .nav-item:hover { color: var(--text-primary); background-color: var(--bg-card); transform: translateX(2px); }
         .nav-item.active { background-color: var(--accent-glow); color: var(--accent-blue); box-shadow: inset 2px 0 0 0 var(--accent-blue); }
         .nav-idx { font-family: var(--font-mono); font-size: 0.65rem; opacity: 0.4; }
 
-        .sidebar-footer { font-size: 0.72rem; color: var(--text-secondary); border-top: 1px solid var(--border-light); padding-top: 15px; margin-top: 15px;}
+        .sidebar-footer { font-size: 0.72rem; color: var(--text-secondary); border-top: 1px solid var(--border-light); padding-top: 15px; margin-top: 15px; }
 
-        /* Main Content with Premium Grid Background */
+        /* Main Content */
         .main-content {
             flex: 1; padding: 40px 60px; box-sizing: border-box; overflow-y: auto;
             display: flex; flex-direction: column;
             background-color: var(--bg-base);
             background-image: 
                 radial-gradient(circle at 50% -20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-                linear-gradient(rgba(42, 50, 65, 0.15) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(42, 50, 65, 0.15) 1px, transparent 1px);
+                linear-gradient(rgba(42, 50, 65, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(42, 50, 65, 0.1) 1px, transparent 1px);
             background-size: 100% 100%, 30px 30px, 30px 30px;
             background-position: center top, center top, center top;
         }
 
-        .slide-layout { max-width: 1050px; width: 100%; margin: auto 0; animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(15px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .slide-layout { max-width: 1050px; width: 100%; margin: auto 0; animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .slide-hidden { display: none !important; }
 
         .slide-tag { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-blue); margin-bottom: 12px; display: inline-block; }
-        .slide-title { font-size: 2.3rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 25px; line-height: 1.1; text-shadow: 0 0 30px rgba(255,255,255,0.05);}
+        .slide-title { font-size: 2.3rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 25px; line-height: 1.1; text-shadow: 0 0 30px rgba(255,255,255,0.05); }
         .slide-subtitle { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 40px; line-height: 1.5; max-width: 850px; }
 
-        /* Premium Glassmorphism Cards */
+        /* Component Styles */
         .card, .panel, .metric-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-light);
-            border-radius: 6px; padding: 25px;
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 6px; padding: 25px;
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
         .card:hover, .panel:hover, .metric-card:hover {
-            border-color: var(--border-glow);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4), inset 0 0 20px rgba(59, 130, 246, 0.05);
-            transform: translateY(-2px);
+            border-color: var(--border-glow); box-shadow: 0 8px 30px rgba(0,0,0,0.4), inset 0 0 20px rgba(59, 130, 246, 0.05); transform: translateY(-2px);
         }
-
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; }
 
-        .metric-val { font-size: 2.2rem; font-weight: 700; font-family: var(--font-mono); color: var(--text-primary); margin-top: 5px; text-shadow: 0 0 20px rgba(255,255,255,0.1);}
+        .metric-val { font-size: 2.2rem; font-weight: 700; font-family: var(--font-mono); color: var(--text-primary); margin-top: 5px; text-shadow: 0 0 20px rgba(255,255,255,0.1); }
         .metric-lbl { font-size: 0.72rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-bottom: 5px; }
 
-        /* Custom Interactive Components */
-        .control-slider { width: 100%; -webkit-appearance: none; background: var(--border-light); height: 4px; border-radius: 2px; outline: none; margin: 15px 0; }
-        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-blue); cursor: pointer; box-shadow: 0 0 12px var(--accent-blue); transition: transform 0.1s;}
-        .control-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
-        .badge { background: var(--bg-card); border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 4px 12px; border-radius: 12px; font-family: var(--font-mono); font-size: 0.85rem; font-weight: bold; box-shadow: 0 0 10px var(--accent-glow);}
-
-        /* Risk Management Custom Slide (Matched to Image Spec) */
-        .risk-item { display: flex; align-items: flex-start; padding: 25px 0; border-bottom: 1px solid var(--border-light); transition: background 0.2s;}
-        .risk-item:hover { background: rgba(59, 130, 246, 0.02); }
+        /* Risk Management Custom Slide */
+        .risk-item { display: flex; align-items: flex-start; padding: 25px 0; border-bottom: 1px solid var(--border-light); }
         .risk-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .risk-arrow { font-size: 1.5rem; color: var(--text-primary); margin-right: 25px; margin-top: 2px; font-weight: 300;}
+        .risk-arrow { font-size: 1.5rem; color: var(--text-primary); margin-right: 25px; margin-top: 2px; font-weight: 300; }
         .risk-content h3 { font-size: 1.25rem; font-weight: 600; margin: 0 0 8px 0; color: var(--text-primary); }
         .risk-content p { color: var(--text-secondary); margin: 0; font-size: 0.95rem; }
 
         /* Moat & Sensor Cards */
         .sensor-card { background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.3s; }
-        .sensor-card:hover { border-color: var(--accent-blue); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1); }
+        .sensor-card:hover { border-color: var(--accent-blue); transform: translateY(-3px); }
         .sensor-card-header { background: rgba(59, 130, 246, 0.1); border-bottom: 1px solid rgba(59, 130, 246, 0.2); padding: 15px 25px; font-size: 1.15rem; font-weight: 600; color: var(--text-primary); }
         .sensor-card-body { padding: 25px; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
         
-        .moat-card { background: var(--bg-card-blue); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 6px; padding: 30px; display: flex; flex-direction: column; gap: 15px; transition: all 0.3s; box-shadow: 0 4px 20px rgba(0,0,0,0.2);}
-        .moat-card:hover { transform: translateY(-4px); border-color: var(--accent-blue); box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);}
-        .moat-icon-wrapper { width: 50px; height: 50px; background: rgba(148, 163, 184, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94A3B8; font-size: 1.2rem; margin-bottom: 10px; transition: all 0.3s;}
-        .moat-card:hover .moat-icon-wrapper { color: var(--accent-blue); background: rgba(59, 130, 246, 0.2); transform: scale(1.1); }
+        .moat-card { background: var(--bg-card-blue); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 6px; padding: 30px; display: flex; flex-direction: column; gap: 15px; transition: all 0.3s; }
+        .moat-card:hover { transform: translateY(-4px); border-color: var(--accent-blue); }
+        .moat-icon-wrapper { width: 50px; height: 50px; background: rgba(148, 163, 184, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #94A3B8; font-size: 1.2rem; margin-bottom: 10px; }
+
+        /* Sliders */
+        .control-slider { width: 100%; -webkit-appearance: none; background: var(--border-light); height: 4px; border-radius: 2px; outline: none; margin: 15px 0; }
+        .control-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--accent-blue); cursor: pointer; box-shadow: 0 0 12px var(--accent-blue); }
+        .badge { background: var(--bg-card); border: 1px solid var(--accent-blue); color: var(--accent-blue); padding: 4px 12px; border-radius: 12px; font-family: var(--font-mono); font-size: 0.85rem; font-weight: bold; }
 
         /* Tables */
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { padding: 18px; text-align: left; border-bottom: 1px solid var(--border-light); font-size: 0.95rem; line-height: 1.5;}
-        th { color: var(--text-secondary); font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; background: rgba(255,255,255,0.02);}
-        tr:hover td { background-color: rgba(59, 130, 246, 0.05); }
+        th, td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border-light); font-size: 0.95rem; line-height: 1.5; }
+        th { color: var(--text-secondary); font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; background: rgba(255,255,255,0.02); }
 
         /* Links/Data Room Slide */
-        .link-card { display: flex; align-items: center; gap: 20px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 6px; text-decoration: none; color: inherit; transition: all 0.2s; backdrop-filter: blur(10px); }
+        .link-card { display: flex; align-items: center; gap: 20px; padding: 20px; background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: 6px; text-decoration: none; color: inherit; transition: all 0.2s; }
         .link-card:hover { border-color: var(--accent-blue); background: var(--bg-card); transform: translateX(5px); }
         .link-icon { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; background: var(--bg-base); border-radius: 6px; font-size: 1.2rem; color: var(--accent-blue); border: 1px solid var(--border-light); }
 
         /* Team Placeholders */
         .team-circle { width: 90px; height: 90px; border-radius: 50%; background: var(--bg-base); border: 2px dashed var(--border-light); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 0.85rem; flex-shrink: 0; font-weight: 600; letter-spacing: 0.05em; transition: all 0.3s; }
-        .card:hover .team-circle { border-color: var(--accent-blue); color: var(--accent-blue); transform: scale(1.05); background: rgba(59, 130, 246, 0.1); }
     </style>
 </head>
 <body>
@@ -177,21 +166,21 @@
         <ul class="nav-list">
             <li class="nav-item active" onclick="goToSlide(0)"><span>Marlowe Analytics</span><span class="nav-idx">01</span></li>
             <li class="nav-item" onclick="goToSlide(1)"><span>The New Standard</span><span class="nav-idx">02</span></li>
-            <li class="nav-item" onclick="goToSlide(2)"><span>Market Context</span><span class="nav-idx">03</span></li>
-            <li class="nav-item" onclick="goToSlide(3)"><span>Market Sizing</span><span class="nav-idx">04</span></li>
-            <li class="nav-item" onclick="goToSlide(4)"><span>SOM Capture</span><span class="nav-idx">05</span></li>
-            <li class="nav-item" onclick="goToSlide(5)"><span>Core Markets</span><span class="nav-idx">06</span></li>
-            <li class="nav-item" onclick="goToSlide(6)"><span>Strategy Flywheel</span><span class="nav-idx">07</span></li>
-            <li class="nav-item" onclick="goToSlide(7)"><span>Data Sensor</span><span class="nav-idx">08</span></li>
-            <li class="nav-item" onclick="goToSlide(8)"><span>Soft Market Moat</span><span class="nav-idx">09</span></li>
-            <li class="nav-item" onclick="goToSlide(9)"><span>The Team</span><span class="nav-idx">10</span></li>
-            <li class="nav-item" onclick="goToSlide(10)"><span>Risk Management</span><span class="nav-idx">11</span></li>
-            <li class="nav-item" onclick="goToSlide(11)"><span>Performance Goals</span><span class="nav-idx">12</span></li>
-            <li class="nav-item" onclick="goToSlide(12)"><span>Investor Economics</span><span class="nav-idx">13</span></li>
-            <li class="nav-item" onclick="goToSlide(13)"><span>Use of Funds</span><span class="nav-idx">14</span></li>
-            <li class="nav-item" style="margin-top: 15px; border: 1px dashed rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.05);" onclick="goToSlide(14)">
-                <span style="color: var(--text-primary);"><i class="fa-solid fa-folder-closed" style="margin-right: 8px; color: var(--accent-blue);"></i>Data Room & Links</span>
-            </li>
+            <li class="nav-item" onclick="goToSlide(2)"><span>Network Infrastructure Context</span><span class="nav-idx">03</span></li>
+            <li class="nav-item" onclick="goToSlide(3)"><span>Market Context</span><span class="nav-idx">04</span></li>
+            <li class="nav-item" onclick="goToSlide(4)"><span>Market Sizing</span><span class="nav-idx">05</span></li>
+            <li class="nav-item" onclick="goToSlide(5)"><span>36-Month SOM Capture</span><span class="nav-idx">06</span></li>
+            <li class="nav-item" onclick="goToSlide(6)"><span>Core Target Markets</span><span class="nav-idx">07</span></li>
+            <li class="nav-item" onclick="goToSlide(7)"><span>Strategy Flywheel</span><span class="nav-idx">08</span></li>
+            <li class="nav-item" onclick="goToSlide(8)"><span>Data Sensor Edge</span><span class="nav-idx">09</span></li>
+            <li class="nav-item" onclick="goToSlide(9)"><span>The Soft Market Moat</span><span class="nav-idx">10</span></li>
+            <li class="nav-item" onclick="goToSlide(10)"><span>The Predictive Alpha Monopoly</span><span class="nav-idx">11</span></li>
+            <li class="nav-item" onclick="goToSlide(11)"><span>The Founders</span><span class="nav-idx">12</span></li>
+            <li class="nav-item" onclick="goToSlide(12)"><span>Risk Management</span><span class="nav-idx">13</span></li>
+            <li class="nav-item" onclick="goToSlide(13)"><span>Performance Goals</span><span class="nav-idx">14</span></li>
+            <li class="nav-item" onclick="goToSlide(14)"><span>Investor Economics</span><span class="nav-idx">15</span></li>
+            <li class="nav-item" onclick="goToSlide(15)"><span>Use of Funds</span><span class="nav-idx">16</span></li>
+            <li class="nav-item" style="margin-top: 15px; border: 1px dashed var(--border-light);" onclick="goToSlide(16)"><span>Data Room & Links</span><span class="nav-idx">✨</span></li>
         </ul>
 
         <div class="sidebar-footer">
@@ -207,15 +196,14 @@
             <h1 class="slide-title">Marlowe Analytics</h1>
             <p class="slide-subtitle" style="font-size: 1.5rem; color: var(--accent-blue);">The Liquidity Layer for the Convergence of Information and Assets</p>
             <div style="width: 100%; height: 350px; background: linear-gradient(135deg, rgba(6,9,13,0) 0%, rgba(59,130,246,0.1) 100%); border: 1px solid var(--border-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                <div style="position: absolute; width: 100%; height: 100%; background-image: radial-gradient(circle, rgba(59,130,246,0.2) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.5;"></div>
-                <div style="z-index: 1; font-family: var(--font-mono); letter-spacing: 0.1em; font-size: 0.9rem;">[ SYSTEM BOOT : STANDBY FOR INSTITUTIONAL DEPLOYMENT ]</div>
+                <div style="position: absolute; width: 100%; height: 100%; background-image: radial-gradient(circle, rgba(59,130,246,0.15) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.5;"></div>
+                <div style="z-index: 1; font-family: var(--font-mono); letter-spacing: 0.1em; font-size: 0.9rem;">[ SYSTEM BOOT : CONFIGURING LIQUIDITY ENGINE PROFILES ]</div>
             </div>
         </div>
 
         <div id="slide-1" class="slide-layout slide-hidden">
             <span class="slide-tag">02 / Introduction</span>
             <h1 class="slide-title">The New Market Standard</h1>
-            
             <div class="grid-3">
                 <div class="panel">
                     <h3 style="color: var(--accent-blue); margin-top: 0;">The Shift</h3>
@@ -233,9 +221,28 @@
         </div>
 
         <div id="slide-2" class="slide-layout slide-hidden">
-            <span class="slide-tag">03 / Context</span>
+            <span class="slide-tag">03 / Target Processing Environments</span>
+            <h1 class="slide-title">Market Structural Environments</h1>
+            <p class="slide-subtitle">Understanding the technical structural parameters defining our programmatic venues.</p>
+            <div class="grid-2">
+                <div class="panel" style="border-left: 3px solid var(--accent-blue);">
+                    <h3 style="margin-top: 0; color: var(--accent-blue);"><i class="fa-solid fa-layer-group" style="margin-right: 10px;"></i> Hyperliquid Layer-1</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin: 0; font-size: 0.95rem;">
+                        Hyperliquid operates as an ultra-high throughput native Layer-1 matching pipeline purpose-built for derivatives processing. By operating as an institutional price discovery center on-chain, it matches centralized venue speeds while providing fully decentralized, programmatic clearing transparency.
+                    </p>
+                </div>
+                <div class="panel" style="border-left: 3px solid var(--warning);">
+                    <h3 style="margin-top: 0; color: var(--warning);"><i class="fa-solid fa-scale-balanced" style="margin-right: 10px;"></i> Prediction Markets</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin: 0; font-size: 0.95rem;">
+                        Prediction markets act as dynamic probability oracles. Rather than matching traditional financial statements, they cross-reference real-world binary outcome parameters (geopolitics, macroeconomics, and sporting events). This creates an information network where continuous repricing translates directly into asset trading edge.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="slide-3" class="slide-layout slide-hidden">
+            <span class="slide-tag">04 / Context</span>
             <h1 class="slide-title">Market Context: May 2026</h1>
-            
             <div class="grid-3">
                 <div class="panel">
                     <div class="metric-val" style="color: var(--accent-blue);">$21B</div>
@@ -255,11 +262,10 @@
             </div>
         </div>
 
-        <div id="slide-3" class="slide-layout slide-hidden">
-            <span class="slide-tag">04 / Sizing</span>
+        <div id="slide-4" class="slide-layout slide-hidden">
+            <span class="slide-tag">05 / Sizing</span>
             <h1 class="slide-title">Market Sizing: The RWA Perpetuals Horizon</h1>
             <p class="slide-subtitle">By targeting specific perpetual contracts rather than spot assets, Marlowe accesses massive, leveraged liquidity pools. The data highlights a critical shift toward on-chain execution, presenting a significant opportunity.</p>
-            
             <div class="grid-3">
                 <div class="metric-card">
                     <div class="metric-lbl">Total Addressable Market (TAM)</div>
@@ -279,11 +285,10 @@
             </div>
         </div>
 
-        <div id="slide-4" class="slide-layout slide-hidden">
-            <span class="slide-tag">05 / Growth</span>
-            <h1 class="slide-title">SOM Capture & Unit Economics</h1>
-            <p class="slide-subtitle">Capturing the spread on our target volume yields compounding returns. We measure success by Capture Efficiency, not guessing price direction. Our 12-month target outlines a clear growth trajectory from an initial $10M daily volume in the launch phase to an ambitious $253M daily volume as we capture our target Serviceable Obtainable Market (SOM).</p>
-            
+        <div id="slide-5" class="slide-layout slide-hidden">
+            <span class="slide-tag">06 / Growth</span>
+            <h1 class="slide-title">36-Month Volume Ramp-Up</h1>
+            <p class="slide-subtitle">Capturing our net edge spread across the explicit data room lifecycle model. Our operational path tracks systematically from an initial <strong>$2.5M daily volume</strong> at launch up to an execution ceiling of <strong>$25.0M daily volume</strong> at Month 36.</p>
             <div class="grid-2">
                 <div class="card" style="padding: 20px;">
                     <div style="height: 300px; position: relative;">
@@ -291,79 +296,105 @@
                     </div>
                 </div>
                 <div class="panel" style="display: flex; flex-direction: column; justify-content: center;">
-                    <h3 style="margin-top:0;">Interactive Yield Simulator</h3>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 25px;">Adjust target daily volume to inspect expected baseline gross earnings (modeled strictly at 7.5 bps capture rate).</p>
-                    
-                    <div class="metric-lbl">Daily Managed Volume</div>
-                    <input type="range" class="control-slider" id="vol-slider" min="10000000" max="253000000" step="1000000" value="50000000" style="margin-bottom: 15px;" oninput="updateEconomics()">
-                    <div id="vol-badge" class="badge" style="display: inline-block; width: max-content; margin-bottom: 30px;">$50.0M</div>
-                    
+                    <h3 style="margin-top:0;">Interactive 3-Year Yield Simulator</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 25px;">Adjust the timeline target slider to view baseline model cash flows evaluated against our core net realized edge parameters.</p>
+                    <div class="metric-lbl">Daily Target Scalability</div>
+                    <input type="range" class="control-slider" id="vol-slider" min="2500000" max="25000000" step="250000" value="25000000" style="margin-bottom: 15px;" oninput="updateEconomics()">
+                    <div id="vol-badge" class="badge" style="display: inline-block; width: max-content; margin-bottom: 30px;">$25.00M</div>
                     <div class="grid-2" style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 8px; border: 1px solid var(--border-light); box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);">
                         <div>
-                            <div class="metric-lbl">Daily Rev (7.5bps)</div>
-                            <div id="rev-daily" style="font-family: var(--font-mono); color: var(--success); font-size: 1.4rem; font-weight: bold; text-shadow: 0 0 10px rgba(16,185,129,0.3);">$3,750</div>
+                            <div class="metric-lbl">Daily Net Profit (1.6bps)</div>
+                            <div id="rev-daily" style="font-family: var(--font-mono); color: var(--success); font-size: 1.4rem; font-weight: bold; text-shadow: 0 0 10px rgba(16,185,129,0.3);">$4,000</div>
                         </div>
                         <div>
-                            <div class="metric-lbl">Annual Run-Rate</div>
-                            <div id="rev-annual" style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: bold; color: var(--text-primary);">$1.36M</div>
+                            <div class="metric-lbl">Annualized Run-Rate</div>
+                            <div id="rev-annual" style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: bold; color: var(--text-primary);">$1.46M</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="slide-5" class="slide-layout slide-hidden">
-            <span class="slide-tag">06 / Markets</span>
-            <h1 class="slide-title">Our Four Core Markets</h1>
-            <p class="slide-subtitle">Our infrastructure initially deploys across four high-velocity RWA perpetual contracts to ensure diversified delta-neutral yield.</p>
-            
-            <div class="grid-2">
-                <div class="panel">
-                    <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent-blue);"><i class="fa-solid fa-oil-well" style="margin-right: 8px;"></i> WTI Perps (WTIOIL-USDC)</h3>
-                    <p style="color: var(--text-secondary); margin: 0; line-height: 1.6;">Incredible on-chain momentum directly rivaling Binance orderbooks. The geopolitical truth machine.</p>
-                </div>
-                <div class="panel">
-                    <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent-blue);"><i class="fa-solid fa-ring" style="margin-right: 8px;"></i> Silver Perps (SILVER-USDC)</h3>
-                    <p style="color: var(--text-secondary); margin: 0; line-height: 1.6;">High-volatility contract providing excellent opportunities for our automated kill-switch strategy.</p>
-                </div>
-                <div class="panel">
-                    <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent-blue);"><i class="fa-solid fa-coins" style="margin-right: 8px;"></i> Gold Perps (GOLD-USDC)</h3>
-                    <p style="color: var(--text-secondary); margin: 0; line-height: 1.6;">Highest gross volume. Primary driver for base market-making yield and tight-spread operations.</p>
-                </div>
-                <div class="panel">
-                    <h3 style="margin-top: 0; margin-bottom: 10px; color: var(--accent-blue);"><i class="fa-solid fa-gas-pump" style="margin-right: 8px;"></i> Brent Perps (BRENTOIL-USDC)</h3>
-                    <p style="color: var(--text-secondary); margin: 0; line-height: 1.6;">Essential for cross-venue delta-neutral funding arbitrage alongside WTI contracts.</p>
-                </div>
-            </div>
-        </div>
-
         <div id="slide-6" class="slide-layout slide-hidden">
-            <span class="slide-tag">07 / Strategy</span>
-            <h1 class="slide-title">The Marlowe Strategy Flywheel</h1>
-            <p class="slide-subtitle">We operate a three-tiered system to harvest alpha from "Soft" on-chain markets. Each tier reinforces the others. Market Making generates the data layer. Intelligence converts that data into directional edge. Funding Arbitrage ensures capital never sits idle. The result is a compounding, self-reinforcing system that grows more efficient at scale.</p>
+            <span class="slide-tag">07 / Execution Venues</span>
+            <h1 class="slide-title">Our Target Market Sectors</h1>
+            <p class="slide-subtitle">Our infrastructure partitions capital deployment across two major processing spaces to secure delta-neutral capture loops.</p>
             
-            <div class="grid-3">
-                <div class="panel" style="border-top: 3px solid var(--accent-blue);">
-                    <h4 style="margin: 0 0 10px 0; font-size: 1.15rem;">Tier 1 - Market Making (The Base)</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0;">24/7 liquidity on Polymarket and Hyperliquid, capturing the spread paid by retail volume.</p>
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div>
+                    <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-blue-light); margin-bottom: 12px;"><i class="fa-solid fa-box-archive" style="margin-right: 8px;"></i> Tokenized RWA Perpetuals</h3>
+                    <div class="grid-4">
+                        <div class="panel" style="padding: 15px;">
+                            <strong style="color: var(--accent-blue); font-size: 0.9rem; display: block; margin-bottom: 4px;">WTI Oil (WTIOIL)</strong>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; display: block;">High on-chain momentum directly rivaling centralized orderbooks.</span>
+                        </div>
+                        <div class="panel" style="padding: 15px;">
+                            <strong style="color: var(--accent-blue); font-size: 0.9rem; display: block; margin-bottom: 4px;">Gold (GOLD)</strong>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; display: block;">Highest gross volume. Base driver for tight spread operations.</span>
+                        </div>
+                        <div class="panel" style="padding: 15px;">
+                            <strong style="color: var(--accent-blue); font-size: 0.9rem; display: block; margin-bottom: 4px;">Silver (SILVER)</strong>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; display: block;">High-volatility contract providing optimized strategy profiles.</span>
+                        </div>
+                        <div class="panel" style="padding: 15px;">
+                            <strong style="color: var(--accent-blue); font-size: 0.9rem; display: block; margin-bottom: 4px;">Brent Oil (BRENTOIL)</strong>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; display: block;">Essential component for running cross-venue funding arbitrage.</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="panel" style="border-top: 3px solid var(--warning);">
-                    <h4 style="margin: 0 0 10px 0; font-size: 1.15rem;">Tier 2 - Intelligence and Momentum (The Alpha)</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0;">Prediction Markets as Decentralized Oracles; MM data acts as a sensor network, moving RWA positions before traditional markets react.</p>
-                </div>
-                <div class="panel" style="border-top: 3px solid var(--success);">
-                    <h4 style="margin: 0 0 10px 0; font-size: 1.15rem;">Tier 3 - Funding Arbitrage (The Stabilizer)</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin: 0;">Delta-Neutral Funding Arb harvests yield, keeping capital productive during sideways price action.</p>
+
+                <div>
+                    <h3 style="font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--warning); margin-bottom: 12px;"><i class="fa-solid fa-trophy" style="margin-right: 8px;"></i> Sports Prediction Markets</h3>
+                    <div class="grid-4">
+                        <div class="panel" style="padding: 15px; border-color: rgba(245, 158, 11, 0.3);">
+                            <strong style="color: var(--warning); font-size: 0.9rem; display: block; margin-bottom: 4px;">NFL</strong>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; display: block;">Massive capital density spikes during weekly game windows.</span>
+                        </div>
+                        <div class="panel" style="padding: 15px; border-color: rgba(245, 158, 11, 0.3);">
+                            <strong style="color: var(--warning); font-size: 0.9rem; display: block; margin-bottom: 4px;">MLB</strong>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; display: block;">High-frequency daily flow providing continuous spread capture options.</span>
+                        </div>
+                        <div class="panel" style="padding: 15px; border-color: rgba(245, 158, 11, 0.3);">
+                            <strong style="color: var(--warning); font-size: 0.9rem; display: block; margin-bottom: 4px;">NBA</strong>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; display: block;">High-scoring live velocity matching engine optimizations.</span>
+                        </div>
+                        <div class="panel" style="padding: 15px; border-color: rgba(245, 158, 11, 0.3);">
+                            <strong style="color: var(--warning); font-size: 0.9rem; display: block; margin-bottom: 4px;">Football (Soccer)</strong>
+                            <span style="font-size: 0.75rem; color: var(--text-secondary); line-height: 1.4; display: block;">Global fluid volumes running 24/7 across international tournament lines.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div id="slide-7" class="slide-layout slide-hidden">
-            <span class="slide-tag">08 / Edge</span>
+            <span class="slide-tag">08 / Strategy</span>
+            <h1 class="slide-title">The Marlowe Strategy Flywheel</h1>
+            <p class="slide-subtitle">We operate a three-tiered system to harvest alpha from "Soft" on-chain markets. Each tier reinforces the others. Market Making generates the data layer. Intelligence converts that data into directional edge. Funding Arbitrage ensures capital never sits idle. The result is a compounding, self-reinforcing system that grows more efficient at scale.</p>
+            <div class="grid-3">
+                <div class="card" style="border-top: 3px solid var(--accent-blue); background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);">
+                    <div class="metric-lbl">Tier 1</div>
+                    <h4 style="margin: 10px 0; font-size: 1.1rem;">Market Making (The Base)</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">24/7 liquidity on Polymarket and Hyperliquid, capturing the spread paid by retail volume.</p>
+                </div>
+                <div class="card" style="border-top: 3px solid var(--warning); background: linear-gradient(180deg, rgba(245, 158, 11, 0.05) 0%, transparent 100%);">
+                    <div class="metric-lbl">Tier 2</div>
+                    <h4 style="margin: 10px 0; font-size: 1.1rem;">Intelligence and Momentum (The Alpha)</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">Prediction Markets as Decentralized Oracles; MM data acts as a sensor network, moving RWA positions before traditional markets react.</p>
+                </div>
+                <div class="card" style="border-top: 3px solid var(--success); background: linear-gradient(180deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%);">
+                    <div class="metric-lbl">Tier 3</div>
+                    <h4 style="margin: 10px 0; font-size: 1.1rem;">Funding Arbitrage (The Stabilizer)</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin: 0;">Delta-Neutral Funding Arb harvests yield, keeping capital productive during sideways price action.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="slide-8" class="slide-layout slide-hidden">
+            <span class="slide-tag">09 / Edge</span>
             <h1 class="slide-title" style="margin-bottom: 15px;">Market Making as a High-Fidelity Data Sensor</h1>
             <p class="slide-subtitle" style="margin-bottom: 25px;">We don't just provide liquidity; we harvest the intelligence that defines the frontier.</p>
             <div style="width: 100%; height: 1px; background: var(--border-light); margin-bottom: 35px;"></div>
-            
             <div class="grid-3">
                 <div class="sensor-card">
                     <div class="sensor-card-header">The Intelligence (The Sensor)</div>
@@ -386,23 +417,20 @@
             </div>
         </div>
 
-        <div id="slide-8" class="slide-layout slide-hidden">
-            <span class="slide-tag">09 / Moat</span>
+        <div id="slide-9" class="slide-layout slide-hidden">
+            <span class="slide-tag">10 / Moat</span>
             <h1 class="slide-title" style="margin-bottom: 40px; font-size: 2.5rem;">The "Soft Market" Moat</h1>
-            
             <div class="grid-3">
                 <div class="moat-card">
                     <div class="moat-icon-wrapper"><i class="fa-solid fa-trophy"></i></div>
                     <h3 style="margin: 0; font-size: 1.25rem;">Uncrowded Alpha</h3>
                     <p style="margin: 0; color: var(--text-secondary); line-height: 1.6;">We aren't fighting $10B HFT firms in New York, London & Hong Kong.</p>
                 </div>
-                
                 <div class="moat-card">
                     <div class="moat-icon-wrapper"><i class="fa-solid fa-chart-line"></i></div>
                     <h3 style="margin: 0; font-size: 1.25rem;">Institutional Logic</h3>
                     <p style="margin: 0; color: var(--text-secondary); line-height: 1.6;">Professional pricing models and automated risk management in markets currently dominated by amateurs and emotional retail traders.</p>
                 </div>
-
                 <div class="moat-card">
                     <div class="moat-icon-wrapper"><i class="fa-solid fa-lock"></i></div>
                     <h3 style="margin: 0; font-size: 1.25rem;">Proprietary Stack</h3>
@@ -411,51 +439,82 @@
             </div>
         </div>
 
-        <div id="slide-9" class="slide-layout slide-hidden">
-            <span class="slide-tag">10 / The Team</span>
-            <h1 class="slide-title">The Team</h1>
+        <div id="slide-10" class="slide-layout slide-hidden">
+            <span class="slide-tag">11 / Macro Horizon Terminal</span>
+            <h1 class="slide-title">The Predictive Alpha Monopoly</h1>
+            <p class="slide-subtitle">Market making provides baseline yield, but our long-term structural value lies in compiling the definitive data layer for global informational event correlation.</p>
+            
             <div class="grid-2">
-                <div class="card" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; padding: 40px 30px;">
-                    <div class="team-circle">Photo</div>
+                <div class="panel" style="border-top: 3px solid var(--accent-blue); justify-content: space-between;">
                     <div>
-                        <h3 style="margin:0 0 5px 0; font-size:1.35rem;">John Goodacre</h3>
-                        <p style="font-size:0.85rem; color: var(--accent-blue); font-weight:700; margin:0 0 15px 0; text-transform: uppercase; letter-spacing: 0.05em;">Global Macro & Quantitative Research</p>
-                        <p style="font-size:0.95rem; color: var(--text-secondary); margin:0; line-height:1.6;">Strategy development. Quantitative research. Risk management. Cross-asset analytics. Formerly Morgan Stanley, GSA Capital, PhD - UCL</p>
+                        <h3 style="margin-top: 0; font-size: 1.2rem;"><i class="fa-solid fa-database" style="color: var(--accent-blue); margin-right: 10px;"></i> Institutional Data Lake Moat</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.9rem;">
+                            As our automated infrastructure executes across sports, macro, and asset perpetual networks over a 36-month timeline, Marlowe maps out exclusive correlation maps. We index exactly how prediction probabilities translate into traditional financial market volatility spikes.
+                        </p>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.2); padding: 12px; border-radius: 4px; border: 1px solid var(--border-light); font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-blue-light);">
+                        [ STORAGE : CORRELATION_MATRIX_ACTIVE // 24H LIVE ]
                     </div>
                 </div>
-                <div class="card" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; padding: 40px 30px;">
-                    <div class="team-circle">Photo</div>
+
+                <div class="panel" style="border-top: 3px solid var(--success); justify-content: space-between;">
                     <div>
-                        <h3 style="margin:0 0 5px 0; font-size:1.35rem;">Kyle McFadden</h3>
-                        <p style="font-size:0.85rem; color: var(--accent-blue); font-weight:700; margin:0 0 15px 0; text-transform: uppercase; letter-spacing: 0.05em;">Fundamental Research & BD</p>
-                        <p style="font-size:0.95rem; color: var(--text-secondary); margin:0; line-height:1.6;">Strategy Development. Fundamental Research. Operations. Business Development. Former Private Equity, Startup Advisor, Operating Partner, Poker Scholar. RWA Tokenisation Research at UCL</p>
+                        <h3 style="margin-top: 0; font-size: 1.2rem;"><i class="fa-solid fa-arrow-trend-up" style="color: var(--success); margin-right: 10px;"></i> Directional Optimization</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6; font-size: 0.9rem;">
+                            With data asymmetry secured, our strategy framework expands. Beyond passive spread capture, Marlowe systematically exploits structural pricing lag—allocating proprietary risk allocations to high-conviction momentum imbalances before legacy aggregators react.
+                        </p>
+                    </div>
+                    <div style="background: rgba(16, 185, 129, 0.05); padding: 12px; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.3); font-family: var(--font-mono); font-size: 0.75rem; color: var(--success);">
+                        [ COGNITION : DIRECTIONAL_OVERLAY_ENABLED // SAFE BOUNDS ]
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="slide-10" class="slide-layout slide-hidden">
-            <span class="slide-tag">11 / Safeguards</span>
-            <h1 class="slide-title" style="margin-bottom: 25px;">Risk Management & Capital Preservation</h1>
-            <p class="slide-subtitle" style="margin-bottom: 20px;">Our comprehensive Capital Preservation Framework is designed to protect assets and minimize risk:</p>
-            
-            <div class="card" style="padding: 0 40px; background: transparent; border: 1px solid var(--border-light); backdrop-filter: none;">
+        <div id="slide-11" class="slide-layout slide-hidden">
+            <span class="slide-tag">12 / Leadership</span>
+            <h1 class="slide-title">The Founders</h1>
+            <div class="grid-2">
+                <div class="card" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;">
+                    <div class="team-circle">Photo</div>
+                    <div>
+                        <h3 style="margin:0 0 5px 0; font-size:1.3rem;">John Goodacre</h3>
+                        <p style="font-size:0.85rem; color: var(--accent-blue); font-weight:700; margin:0 0 10px 0; text-transform: uppercase; letter-spacing: 0.05em;">Global Macro & Quantitative Research</p>
+                        <p style="font-size:0.95rem; color: var(--text-secondary); margin:0; line-height:1.6;">Strategy development. Quantitative research. Risk management. Cross-asset analytics. Formerly Morgan Stanley, GSA Capital, PhD - UCL.</p>
+                    </div>
+                </div>
+                <div class="card" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px;">
+                    <div class="team-circle">Photo</div>
+                    <div>
+                        <h3 style="margin:0 0 5px 0; font-size:1.3rem;">Kyle McFadden</h3>
+                        <p style="font-size:0.85rem; color: var(--accent-blue); font-weight:700; margin:0 0 10px 0; text-transform: uppercase; letter-spacing: 0.05em;">Fundamental Research & BD</p>
+                        <p style="font-size:0.95rem; color: var(--text-secondary); margin:0; line-height:1.6;">Strategy Development. Fundamental Research. Operations. Business Development. Former Private Equity, Startup Advisor, Operating Partner, Poker Scholar. RWA Tokenisation Research at UCL.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="slide-12" class="slide-layout slide-hidden">
+            <span class="slide-tag">13 / Safeguards</span>
+            <h1 class="slide-title">Risk Management & Capital Preservation</h1>
+            <p class="slide-subtitle" style="margin-bottom: 25px;">Our comprehensive Capital Preservation Framework is designed to protect assets and minimize risk:</p>
+            <div class="card" style="padding: 0 30px; background: transparent; border: 1px solid var(--border-light); backdrop-filter: none;">
                 <div class="risk-item">
-                    <div class="risk-arrow"><i class="fa-solid fa-arrow-right-long" style="font-weight: 300;"></i></div>
+                    <div class="risk-arrow">→</div>
                     <div class="risk-content">
                         <h3>Delta-Neutral Focus</h3>
                         <p>Minimizes directional exposure during market crashes.</p>
                     </div>
                 </div>
                 <div class="risk-item">
-                    <div class="risk-arrow"><i class="fa-solid fa-arrow-right-long" style="font-weight: 300;"></i></div>
+                    <div class="risk-arrow">→</div>
                     <div class="risk-content">
                         <h3>Automated Kill-Switches</h3>
                         <p>Real-time exchange-side risk controls trigger automatically.</p>
                     </div>
                 </div>
                 <div class="risk-item" style="border-bottom: none;">
-                    <div class="risk-arrow"><i class="fa-solid fa-arrow-right-long" style="font-weight: 300;"></i></div>
+                    <div class="risk-arrow">→</div>
                     <div class="risk-content">
                         <h3>Multi-Sig Asset Protection</h3>
                         <p>All TopCo funds secured with multi-signature governance.</p>
@@ -464,32 +523,30 @@
             </div>
         </div>
 
-        <div id="slide-11" class="slide-layout slide-hidden">
-            <span class="slide-tag">12 / Targets</span>
+        <div id="slide-13" class="slide-layout slide-hidden">
+            <span class="slide-tag">14 / Targets</span>
             <h1 class="slide-title">Unit Economics & Performance Goals</h1>
             <p class="slide-subtitle">We measure success by Capture Efficiency - not by guessing price direction.</p>
-            
             <div class="grid-3">
                 <div class="panel">
-                    <h3 style="margin-top:0; color: var(--accent-blue);"><i class="fa-solid fa-bullseye" style="margin-right: 8px;"></i> Target Volume</h3>
+                    <h3 style="margin-top:0; color: var(--accent-blue);">Target Volume</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">We aim to capture a significant percentage of daily volume across key pairs Gold/Oil RWAs, and Major Prediction Markets to scale to $5bn+ of Volume per annum</p>
                 </div>
                 <div class="panel">
-                    <h3 style="margin-top:0; color: var(--accent-blue);"><i class="fa-solid fa-money-bill-wave" style="margin-right: 8px;"></i> Expected Returns</h3>
+                    <h3 style="margin-top:0; color: var(--accent-blue);">Expected Returns</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">Based on current "Soft Market" spreads, we target 5-10 bps (with rebates and volume based fee discounts) per $1M of volume handled</p>
                 </div>
                 <div class="panel">
-                    <h3 style="margin-top:0; color: var(--accent-blue);"><i class="fa-solid fa-arrow-up-right-dots" style="margin-right: 8px;"></i> Scaling Logic</h3>
+                    <h3 style="margin-top:0; color: var(--accent-blue);">Scaling Logic</h3>
                     <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">As we scale our liquidity inventory, our ability to capture higher volume compounds - driving net earnings growth for the TopCo.</p>
                 </div>
             </div>
         </div>
 
-        <div id="slide-12" class="slide-layout slide-hidden">
-            <span class="slide-tag">13 / Terms</span>
+        <div id="slide-14" class="slide-layout slide-hidden">
+            <span class="slide-tag">15 / Terms</span>
             <h1 class="slide-title">Investor Economics</h1>
-            
-            <div class="card" style="padding:0; overflow:hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+            <div class="card" style="padding:0; overflow:hidden; border: 1px solid rgba(59, 130, 246, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
                 <table>
                     <tr>
                         <td style="font-weight:700; color: var(--accent-blue); width: 25%; padding: 30px 25px; font-size: 1.05rem;">Preferred Return</td>
@@ -507,27 +564,25 @@
             </div>
         </div>
 
-        <div id="slide-13" class="slide-layout slide-hidden">
-            <span class="slide-tag">14 / Roadmap</span>
+        <div id="slide-15" class="slide-layout slide-hidden">
+            <span class="slide-tag">16 / Roadmap</span>
             <h1 class="slide-title">Use of Funds & Roadmap</h1>
             <p class="slide-subtitle">Target raise: <strong>£500,000</strong> to build the infrastructure, capital, and talent required to launch at scale.</p>
-            
             <div class="grid-2">
                 <div class="card" style="display: flex; flex-direction: column; justify-content: center; gap: 20px;">
-                    <div style="padding: 15px; border-radius: 6px; border-left: 3px solid var(--accent-blue); background: rgba(59, 130, 246, 0.05); transition: background 0.3s;" onmouseover="hoverFundChart(0)" onmouseout="resetFundChart()">
-                        <strong style="color: var(--text-primary); font-size: 1.1rem; display: block; margin-bottom: 5px;">40% — Infrastructure & Base</strong>
+                    <div style="padding: 15px; border-radius: 6px; border-left: 3px solid var(--accent-blue); background: rgba(59, 130, 246, 0.05);">
+                        <strong style="color: var(--text-primary); font-size: 1.1rem; display: block; margin-bottom: 5px;">40% — Infrastructure</strong>
                         <span style="color: var(--text-secondary); font-size: 0.9rem;">High-performance cloud compute and low-latency connectivity to Hyperliquid L1 and Polymarket Oracles.</span>
                     </div>
-                    <div style="padding: 15px; border-radius: 6px; border-left: 3px solid var(--success); background: rgba(16, 185, 129, 0.05); transition: background 0.3s;" onmouseover="hoverFundChart(1)" onmouseout="resetFundChart()">
-                        <strong style="color: var(--text-primary); font-size: 1.1rem; display: block; margin-bottom: 5px;">50% — Talent & Engineering</strong>
-                        <span style="color: var(--text-secondary); font-size: 0.9rem;">Salaries for leadership team plus securing Research Quants and Rust/Python execution engineers.</span>
+                    <div style="padding: 15px; border-radius: 6px; border-left: 3px solid var(--success); background: rgba(16, 185, 129, 0.05);">
+                        <strong style="color: var(--text-primary); font-size: 1.1rem; display: block; margin-bottom: 5px;">50% — Talent</strong>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">Salaries for leadership team plus securing Research Quants and Rust/Python engineers.</span>
                     </div>
-                    <div style="padding: 15px; border-radius: 6px; border-left: 3px solid var(--warning); background: rgba(245, 158, 11, 0.05); transition: background 0.3s;" onmouseover="hoverFundChart(2)" onmouseout="resetFundChart()">
-                        <strong style="color: var(--text-primary); font-size: 1.1rem; display: block; margin-bottom: 5px;">10% — Operational Overhead</strong>
-                        <span style="color: var(--text-secondary); font-size: 0.9rem;">Office space, equipment, legal, and operational buffer.</span>
+                    <div style="padding: 15px; border-radius: 6px; border-left: 3px solid var(--warning); background: rgba(245, 158, 11, 0.05);">
+                        <strong style="color: var(--text-primary); font-size: 1.1rem; display: block; margin-bottom: 5px;">10% — Other</strong>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">Office space, equipment, and operational overhead.</span>
                     </div>
                 </div>
-                
                 <div class="card" style="display: flex; align-items: center; justify-content: center; position: relative;">
                     <div style="width: 100%; height: 300px; position: relative; display: flex; justify-content: center; align-items: center;">
                         <canvas id="fundsChart"></canvas>
@@ -540,7 +595,7 @@
             </div>
         </div>
 
-        <div id="slide-14" class="slide-layout slide-hidden">
+        <div id="slide-16" class="slide-layout slide-hidden">
             <span class="slide-tag">✨ / External Resources</span>
             <h1 class="slide-title">Data Room & Resources</h1>
             <p class="slide-subtitle">Access live technical frameworks, compliance documentation, and interactive engine simulations.</p>
@@ -572,7 +627,6 @@
     </main>
 
     <script>
-        // Core Slide Navigation
         function goToSlide(slideIdx) {
             document.querySelectorAll('.slide-layout').forEach((slide, idx) => {
                 if(idx === slideIdx) slide.classList.remove('slide-hidden');
@@ -583,56 +637,61 @@
                 else item.classList.remove('active');
             });
 
-            // Lazy Load Charts to ensure proper canvas width/height rendering
-            if(slideIdx === 7 && !growthChartInstance) setTimeout(initGrowthChart, 50);
-            if(slideIdx === 13 && !fundsChartInstance) setTimeout(initFundsChart, 50);
+            if(slideIdx === 5 && !growthChartInstance) setTimeout(initGrowthChart, 50);
+            if(slideIdx === 15 && !fundsChartInstance) setTimeout(initFundsChart, 50);
         }
 
-        // Slide 8: Interactive Economics & SOM Chart Math
         let growthChartInstance = null;
         function initGrowthChart() {
             const ctx = document.getElementById('growthChart').getContext('2d');
-            Chart.defaults.color = '#94A3B8'; Chart.defaults.font.family = 'JetBrains Mono';
-            
+            Chart.defaults.color = '#94A3B8';
+            Chart.defaults.font.family = 'JetBrains Mono';
             growthChartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['Launch', 'Scaling', 'Optimised', 'Target'],
+                    labels: ['Launch (M1)', 'Year 1 (M12)', 'Year 2 (M24)', 'Year 3 (M36)'],
                     datasets: [
-                        { label: 'Projected Trajectory', data: [10, 50, 120, 50], borderColor: 'rgba(59, 130, 246, 0.3)', borderDash: [5, 5], borderWidth: 2, pointRadius: 0, fill: false },
-                        { label: 'Target Daily Volume ($M)', data: [10, 50, null, null], borderColor: '#10B981', borderWidth: 3, pointBackgroundColor: '#10B981', pointBorderColor: '#0F131A', pointRadius: 6, tension: 0.3, fill: true, backgroundColor: 'rgba(16, 185, 129, 0.05)' }
+                        { label: 'Model Track Boundary', data: [2.5, 5.0, 15.0, 25.0], borderColor: 'rgba(59, 130, 246, 0.3)', borderDash: [5, 5], borderWidth: 2, pointRadius: 0, fill: false },
+                        { label: 'Simulated Target Volume ($M)', data: [2.5, 5.0, 15.0, 25.0], borderColor: '#10B981', borderWidth: 3, pointBackgroundColor: '#10B981', pointBorderColor: '#040609', pointRadius: 6, tension: 0.2, fill: true, backgroundColor: 'rgba(16, 185, 129, 0.05)' }
                     ]
                 },
                 options: { 
                     responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, 
-                    scales: { y: { grid: { color: 'rgba(42, 50, 65, 0.5)' }, min: 0, max: 260, ticks: { callback: v => '$'+v+'M'} }, x: { grid: { display: false } } },
-                    animation: { duration: 400 }
+                    scales: { y: { grid: { color: '#1F2937' }, min: 0, max: 30, ticks: { callback: v => '$'+v+'M'} }, x: { grid: { display: false } } }
                 }
             });
-            updateEconomics(); // Force chart sync on load
+            updateEconomics();
         }
 
         function updateEconomics() {
             const vol = parseFloat(document.getElementById('vol-slider').value);
-            document.getElementById('vol-badge').innerText = "$" + (vol / 1000000).toFixed(1) + "M";
+            document.getElementById('vol-badge').innerText = "$" + (vol / 1000000).toFixed(2) + "M";
             
-            const daily = vol * 0.00075;
+            const daily = vol * 0.00016;
+            const annual = daily * 365;
+            
             document.getElementById('rev-daily').innerText = "$" + daily.toLocaleString(undefined, {maximumFractionDigits: 0});
-            document.getElementById('rev-annual').innerText = "$" + (daily * 365 / 1000000).toFixed(2) + "M";
+            
+            if(annual >= 1000000) {
+                document.getElementById('rev-annual').innerText = "$" + (annual / 1000000).toFixed(2) + "M";
+            } else {
+                document.getElementById('rev-annual').innerText = "$" + (annual / 1000).toFixed(1) + "K";
+            }
 
-            // Dynamically update chart visualization
             if(growthChartInstance) {
                 let volM = vol / 1000000;
-                let p3 = volM > 50 ? Math.min(120, 50 + (volM-50)/2) : null;
-                let p4 = volM > 50 ? volM : null;
                 
-                growthChartInstance.data.datasets[1].data = [10, Math.min(50, volM), p3, p4];
-                growthChartInstance.data.datasets[0].data = [10, 50, 120, volM]; 
+                // Maps the active execution plot line directly across the full 36-month timeline array boundaries
+                let p2 = Math.min(5.0, volM);
+                let p3 = volM > 5.0 ? Math.min(15.0, 5.0 + ((volM - 5.0) * (10.0 / 10.0))) : null;
+                let p4 = volM > 15.0 ? volM : null;
+                
+                growthChartInstance.data.datasets[1].data = [2.5, p2, p3, p4];
+                growthChartInstance.data.datasets[0].data = [2.5, 5.0, 15.0, volM]; 
                 growthChartInstance.update();
             }
         }
 
-        // Slide 14: Use of Funds Donut Chart
         let fundsChartInstance = null;
         function initFundsChart() {
             const ctx = document.getElementById('fundsChart').getContext('2d');
@@ -652,21 +711,6 @@
                     plugins: { legend: { display: false }, tooltip: { bodyFont: {family: 'JetBrains Mono'} } }
                 }
             });
-        }
-
-        // Chart Interactive Hovers
-        function hoverFundChart(index) {
-            if(fundsChartInstance) {
-                const meta = fundsChartInstance.getDatasetMeta(0);
-                fundsChartInstance.setActiveElements([{datasetIndex: 0, index: index}]);
-                fundsChartInstance.update();
-            }
-        }
-        function resetFundChart() {
-            if(fundsChartInstance) {
-                fundsChartInstance.setActiveElements([]);
-                fundsChartInstance.update();
-            }
         }
     </script>
 </body>
